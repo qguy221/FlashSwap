@@ -1,0 +1,14 @@
+{
+  "sei_rpc": "https://sei-rpc.example.com",
+  "alchemy_rpc": "https://alchemy.example.com",
+  "private_key": "your_private_key_here",
+  "flash_loan_provider": "0x...",
+  "dex_whitelist": ["0xDex1", "0xDex2"],
+  "vault_whitelist": ["0xVault1", "0xVault2"],
+  "min_profit_threshold": 0.01,
+  "max_slippage": 0.5,
+  "risk_params": {
+    "max_risk_score": 0.8,
+    "kelly_fraction": 0.2
+  }
+}
