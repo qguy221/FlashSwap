@@ -2,7 +2,7 @@
 pragma solidity 0.8.28;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./interfaces/IFlashLoanProvider.sol";
 import "./interfaces/IDex.sol";
@@ -81,86 +81,6 @@ contract FlashSwapArbAgent is Ownable, ReentrancyGuard {
         // Transfer profit to owner or vault
     }
 
-    function optimizeYield(YieldParams calldata params) external onlyAIAgent nonReentrant {
-        require(vaultWhitelist[params.fromVault], "Vault not whitelisted");
-        require(vaultWhitelist[params.toVault], "Vault not whitelisted");
-
-        // Withdraw from fromVault
-        IVault(params.fromVault).withdraw(params.amount);
-
-        // Deposit to toVault
-        address token = IVault(params.toVault).underlyingToken();
-        IERC20(token).approve(params.toVault, params.amount);
-        IVault(params.toVault).deposit(params.amount);
-    }
-
-    // Admin functions
-    function addDexToWhitelist(address dex) external onlyOwner {
-        dexWhitelist[dex] = true;
-    }
-
-    function addVaultToWhitelist(address vault) external onlyOwner {
-        vaultWhitelist[vault] = true;
-    }
-
-    function setMinProfitThreshold(uint256 threshold) external onlyOwner {
-        minProfitThreshold = threshold;
-    }
-
-    function setMaxSlippage(uint256 slippage) external onlyOwner {
-        maxSlippage = slippage;
-    }
-
-    function emergencyWithdraw(address token, uint256 amount) external onlyOwner {
-        IERC20(token).transfer(owner(), amount);
-    }
-
-    // Add event for logging
-     event ArbitrageExecuted(address tokenIn, address tokenOut, uint256 profit);
-    
-    // In executeOperation, after calculating profit
-     emit ArbitrageExecuted(params.tokenIn, params.tokenOut, profit);
-    
-    // Add gas limit check
-     require(gasleft() > 100000, "Insufficient gas");
-}
-
-    function optimizeYield(YieldParams calldata params) external onlyAIAgent nonReentrant {
-        require(vaultWhitelist[params.fromVault], "Vault not whitelisted");
-        require(vaultWhitelist[params.toVault], "Vault not whitelisted");
-
-        // Withdraw from fromVault
-        IVault(params.fromVault).withdraw(params.amount);
-
-        // Deposit to toVault
-        address token = IVault(params.toVault).underlyingToken();
-        IERC20(token).approve(params.toVault, params.amount);
-        IVault(params.toVault).deposit(params.amount);
-    }
-
-    // Admin functions
-    function addDexToWhitelist(address dex) external onlyOwner {
-        dexWhitelist[dex] = true;
-    }
-
-    function addVaultToWhitelist(address vault) external onlyOwner {
-        vaultWhitelist[vault] = true;
-    }
-
-    function setMinProfitThreshold(uint256 threshold) external onlyOwner {
-        minProfitThreshold = threshold;
-    }
-
-    function setMaxSlippage(uint256 slippage) external onlyOwner {
-        maxSlippage = slippage;
-    }
-
-    function emergencyWithdraw(address token, uint256 amount) external onlyOwner {
-        IERC20(token).transfer(owner(), amount);
-    }
-}
-
-    // Update optimizeYield to include fee calculation or something for realism
     function optimizeYield(YieldParams calldata params) external onlyAIAgent nonReentrant {
         require(vaultWhitelist[params.fromVault], "Vault not whitelisted");
         require(vaultWhitelist[params.toVault], "Vault not whitelisted");
