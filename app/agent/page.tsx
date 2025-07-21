@@ -34,7 +34,3 @@ function AgentPage() {
     </div>
   );
 }
-export default function AgentPage() {
-  const [agentStatus, setAgentStatus] = useState<"running" | "stopped" | "initializing">("running")
-  const [logs, setLogs] = useState<AgentLog[]>([])
-}

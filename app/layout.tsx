@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
+import { ThemeProvider } from "next-themes"
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -57,16 +59,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 min-h-screen`}>
-        <div className="relative">
-          {/* Background Effects */}
-          <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-          <div className="fixed inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10" />
-
-          {/* Content */}
-          <div className="relative z-10">{children}</div>
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <div className="relative min-h-screen bg-background">
+            {/* Enhanced Background Effects */}
+            <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5" />
+            <div className="fixed inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-cyan-900/20 animate-gradient-x" />
+            {/* Content */}
+            <div className="relative z-10">{children}</div>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

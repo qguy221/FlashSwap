@@ -1,0 +1,204 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom CSS Variables */
+:root {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
+}
+
+body {
+  @apply bg-background text-foreground;
+  background: linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+}
+
+/* Enhanced Animations */
+@keyframes gentle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.gentle-pulse {
+  animation: gentle-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes soft-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); }
+  50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+}
+
+.soft-glow {
+  animation: soft-glow 3s ease-in-out infinite;
+}
+
+@keyframes data-stream {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0; }
+}
+
+.data-stream {
+  animation: data-stream 10s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(to right, #f6f7f8 0%, #edeef1 10%, #f6f7f8 20%, #f6f7f8 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Agent Status Indicators */
+.agent-status {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.agent-active { @apply bg-green-500/20 text-green-300; }
+.agent-paused { @apply bg-yellow-500/20 text-yellow-300; }
+.agent-learning { @apply bg-blue-500/20 text-blue-300; }
+
+/* Profit/Loss Styles */
+.profit-positive { @apply text-green-400; }
+.profit-negative { @apply text-red-400; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-purple-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-purple-400;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+  @apply bg-slate-800/30 backdrop-blur-md border border-slate-600/30 shadow-xl;
+}
+
+/* Gradient Text */
+.gradient-text {
+  @apply bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent;
+}
+
+/* Network Status */
+.network-healthy { @apply text-green-400; }
+.network-degraded { @apply text-yellow-400; }
+.network-offline { @apply text-red-400; }
+
+/* Opportunity Card */
+.opportunity-card {
+  @apply glass-card p-4 space-y-3 hover:shadow-2xl transition-shadow;
+}
+
+/* Decision Reasoning */
+.reasoning-flow {
+  @apply bg-slate-700/50 p-4 rounded-lg border border-slate-600/30;
+}
+
+/* Metric Card */
+.metric-card {
+  @apply glass-card hover:scale-105 transition-transform;
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all;
+}
+
+.btn-secondary {
+  @apply bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all;
+}
+
+.btn-success {
+  @apply bg-green-600 hover:bg-green-500 text-white;
+}
+
+.btn-danger {
+  @apply bg-red-600 hover:bg-red-500 text-white;
+}
+
+.btn-warning {
+  @apply bg-yellow-600 hover:bg-yellow-500 text-white;
+}
+
+.btn-info {
+  @apply bg-blue-600 hover:bg-blue-500 text-white;
+}
+
+/* Badge Styles */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium;
+}
+
+.badge-success { @apply bg-green-500/20 text-green-300; }
+.badge-error { @apply bg-red-500/20 text-red-300; }
+.badge-warning { @apply bg-yellow-500/20 text-yellow-300; }
+.badge-info { @apply bg-blue-500/20 text-blue-300; }
+.badge-neutral { @apply bg-slate-500/20 text-slate-300; }
+
+/* Responsive Improvements */
+@media (max-width: 640px) {
+  .metric-card {
+    @apply p-4;
+  }
+}
+
+/* Accessibility Improvements */
+:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Dark Mode Specific */
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+}
+
+/* Light Mode (if enabled) */
+.light {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+}
+
+/* Animated Gradient Background */
+@keyframes gradient-x {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
