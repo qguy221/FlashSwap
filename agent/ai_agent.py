@@ -6,6 +6,8 @@ from market_analyzer import MarketAnalyzer
 from risk_manager import RiskManager
 from execution_engine import ExecutionEngine
 import requests  # Untuk Cambrian API
+from MarketFetcher import MarketFetcher
+from OpportunityScanner import OpportunityScanner
 
 class FlashSwapArbAgent:
     def __init__(self, config_path='config.json'):
@@ -17,12 +19,14 @@ class FlashSwapArbAgent:
         self.risk_manager = RiskManager(self.config)
         self.execution_engine = ExecutionEngine(self.config, self.w3, self.account)
         self.performance = {'profits': 0, 'trades': 0}
+        self.fetcher = MarketFetcher(self.config)
+        self.scanner = OpportunityScanner(self.config)
 
     # Enhance main_loop with decision making
     async def main_loop(self):
         while True:
             cambrian_data = self.fetch_cambrian_data()
-            opportunities = await self.market_analyzer.detect_opportunities(cambrian_data)
+            opportunities = self.scanner.scan_arbitrage()
             for opp in opportunities:
                 if self.market_analyzer.predict_trend(opp['historical']):  # Use prediction
                     risk_score, tx_size = self.risk_manager.assess_risk(opp)
@@ -31,7 +35,7 @@ class FlashSwapArbAgent:
                         if success:
                             self.performance['profits'] += profit
                             self.performance['trades'] += 1
-            yield_opp = await self.market_analyzer.detect_yield_opportunities()
+            yield_opp = self.scanner.scan_yield()
             if yield_opp:
                 self.elizaos_optimize(yield_opp)
                 await self.execution_engine.optimize_yield(yield_opp)

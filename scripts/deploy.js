@@ -4,14 +4,28 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   console.log('Deploying with account:', deployer.address);
 
-  const FlashSwapArbAgent = await ethers.getContractFactory('FlashSwapArbAgent');
-  // Replace with actual addresses
-  const flashLoanProvider = '0x0000000000000000000000000000000000000000';
-  const aiAgent = deployer.address; // Or actual AI agent address
-  const contract = await FlashSwapArbAgent.deploy(flashLoanProvider, aiAgent);
-  console.log('FlashSwapArbAgent deployed to:', contract.address);
+  // Deploy MockERC20
+  const MockERC20 = await ethers.getContractFactory('MockERC20');
+  const mockToken = await MockERC20.deploy('Mock Token', 'MTK');
+  await mockToken.waitForDeployment();
+  console.log('MockERC20 deployed to:', mockToken.target);
 
-  // Update config.json with deployed address (manual for now)
+  // Deploy FlashSwapArbAgent
+  const FlashSwapArbAgent = await ethers.getContractFactory('FlashSwapArbAgent');
+  // Replace with actual addresses if available
+  const flashLoanProvider = '0x0000000000000000000000000000000000000000'; // Placeholder
+  const aiAgent = deployer.address; // Using deployer as placeholder
+  const arbAgent = await FlashSwapArbAgent.deploy(flashLoanProvider, aiAgent);
+  await arbAgent.waitForDeployment();
+  console.log('FlashSwapArbAgent deployed to:', arbAgent.target);
+
+  // Deploy FlashSwapVault
+  const FlashSwapVault = await ethers.getContractFactory('FlashSwapVault');
+  const vault = await FlashSwapVault.deploy(mockToken.target, 'FlashSwap Vault', 'FSV', arbAgent.target);
+  await vault.waitForDeployment();
+  console.log('FlashSwapVault deployed to:', vault.target);
+
+  // Update config.json with deployed addresses (manual for now)
 }
 
 main()
