@@ -1,36 +1,36 @@
-# Flash-Swap AI Arb Agent: Revolusi DeFi dengan AI Otonom di Sei Network
+# Flash-Swap AI Arb Agent: Revolutionizing DeFi with Autonomous AI on Sei Network
 
 ![Flash-Swap AI Arb Agent](https://via.placeholder.com/800x200?text=Flash-Swap+AI+Arb+Agent)  
-*(Gambar demo dashboard: Pantau peluang arbitrase real-time dan optimasi yield dengan AI canggih)*
+*(Demo dashboard image: Monitor real-time arbitrage opportunities and yield optimization with advanced AI)*
 
-**Revolusi DeFi Telah Tiba!** Bayangkan sebuah agen AI yang secara otonom mendeteksi, mengeksekusi, dan mengoptimalkan peluang arbitrase flash swap serta rebalancing yield di jaringan Sei – blockchain tercepat untuk DeFi. Dengan teknologi AI mutakhir, proyek ini bukan hanya tool, tapi mesin pencetak profit yang bisa skalabel hingga miliaran dolar. Investor, ini kesempatan Anda untuk inject dana 100M+ ke proyek yang akan dominasi AI-DeFi. Potensi ROI tak terbatas – seperti Uniswap atau Aave di awal. Mari breakdown kenapa ini layak funding Anda!
+**The DeFi Revolution Has Arrived!** Imagine an AI agent that autonomously detects, executes, and optimizes flash swap arbitrage opportunities and yield rebalancing on the Sei network – the fastest blockchain for DeFi. With cutting-edge AI technology, this project is not just a tool, but a scalable profit machine capable of handling billions of dollars. Investors, this is your chance to inject 100M+ funding into a project that will dominate AI-DeFi. Unlimited ROI potential – like Uniswap or Aave in their early days. Let's break down why this deserves your funding!
 
-## Mengapa Proyek Ini Akan Menang Hackathon dan Dominasi Pasar?
-- **Inovasi AI di DeFi**: Agen Python pakai machine learning (RandomForestRegressor & ARIMA) untuk prediksi tren, scan arbitrase, manajemen risiko – AI sejati yang belajar dari data real-time.
-- **Integrasi Sei Network**: Desain khusus untuk Sei, deploy ke testnet via Hardhat. Flash loans eksekusi milidetik, maksimalkan profit di ekosistem Sei.
-- **Potensi Monetisasi**: Fee trade, premium features, partnership DEX. Proyeksi: 100M+ TVL, revenue 10M+ dalam 1 tahun.
-- **Tim & Traction**: Buat AI Accelathon Sei, demo siap, UI modern. Siap scale mainnet – butuh funding untuk audit dan expansion.
+## Why This Project Will Win the Hackathon and Dominate the Market?
+- **AI Innovation in DeFi**: Python agents using machine learning (RandomForestRegressor & ARIMA) for trend prediction, arbitrage scanning, risk management – true AI that learns from real-time data.
+- **Sei Network Integration**: Designed specifically for Sei, deployed to testnet via Hardhat. Millisecond flash loan executions to maximize profits in the Sei ecosystem.
+- **Monetization Potential**: Trade fees, premium features, DEX partnerships. Projections: 100M+ TVL, 10M+ revenue in 1 year.
+- **Team & Traction**: Built for AI Accelathon Sei, ready demo, modern UI. Ready to scale to mainnet – needs funding for audit and expansion.
 
-**Investor Alert**: Inject 100M sekarang, dapat equity di unicorn DeFi berikutnya!
+**Investor Alert**: Inject 100M now and get equity in the next DeFi unicorn!
 
-## Fitur Utama
+## Key Features
 ### Smart Contracts (contracts/)
-- FlashSwapArbAgent.sol: Eksekusi arbitrase.
-- FlashSwapVault.sol: Optimasi yield.
-- MockERC20.sol: Tes token.
-- Interfaces & Libraries: Dukung DEX, flash loans.
+- FlashSwapArbAgent.sol: Arbitrage execution.
+- FlashSwapVault.sol: Yield optimization.
+- MockERC20.sol: Test tokens.
+- Interfaces & Libraries: Support for DEX, flash loans.
 
 ### AI Agent (agent/)
-- ai_agent.py: Loop utama, integrasi Web3.
-- market_analyzer.py: Prediksi ML, fetch harga Sei.
-- Lainnya: Risk, execution, scanner.
+- ai_agent.py: Main loop, Web3 integration.
+- market_analyzer.py: ML predictions, fetch Sei prices.
+- Others: Risk, execution, scanner.
 
 ### Frontend (Next.js)
-- Dashboard dengan shadcn/ui: Table peluang, kontrol agen.
-- Jalankan: npm run dev.
+- Dashboard with shadcn/ui: Opportunities table, agent controls.
+- Run: npm run dev.
 
 ### Deployment
-- Hardhat: Deploy ke Sei testnet.
+- Hardhat: Deploy to Sei testnet.
 - Config: .env, config.json.
 
 ## Quick Start
@@ -38,14 +38,14 @@
 2. Install deps.
 3. Setup .env.
 4. Deploy: npx hardhat run scripts/deploy.js --network sei.
-5. Jalankan agent dan frontend.
+5. Run agent and frontend.
 
-## Potensi Bisnis
-- Market DeFi $100B+.
-- Edge: AI + flash swaps = profit 10x cepat.
+## Business Potential
+- DeFi market $100B+.
+- Edge: AI + flash swaps = 10x faster profits.
 - Roadmap: Mainnet Q3 2024, DAO 2025.
 
-**Call to Action**: Investor, DM untuk funding 100M+! Let's build together!
+**Call to Action**: Investors, DM for 100M+ funding! Let's build together!
 
 ---
-Untuk AI Accelathon Sei.
+For AI Accelathon Sei.
